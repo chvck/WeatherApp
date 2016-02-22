@@ -1,0 +1,42 @@
+{
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "description": "Small app to display the weather",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.babel.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/herman-rogers/WeatherApp.git"
+  },
+  "keywords": [
+    "Redux",
+    "React",
+    "Express"
+  ],
+  "author": "Boomer Rogers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/herman-rogers/WeatherApp/issues"
+  },
+  "homepage": "https://github.com/herman-rogers/WeatherApp#readme",
+  "dependencies": {
+    "babel": "^5.8.0",
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.3",
+    "express": "^4.13.4",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-redux": "^4.4.0",
+    "redux": "^3.3.1"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.5.2",
+    "expect": "^1.14.0",
+    "mocha": "^2.4.5",
+    "webpack": "^1.12.13"
+  }
+}
