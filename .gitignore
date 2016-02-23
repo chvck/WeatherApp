@@ -10,10 +10,14 @@ pids
 
 #Ignore webpack files
 *.hot-update.json
+*.hot-update.js
 bundle.js
 
 #Ignore vim files
 *.swp
+
+#Ignore database storage
+*.db
 
 # node-waf configuration
 .lock-wscript

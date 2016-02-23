@@ -1,9 +1,15 @@
 import Express from 'express';
+import * as db from './database/database.js';
 import path from 'path';
 
 export const app = Express();
 
+//var testDoc = { hello: 'world', n: 5, today: new Date() };
+
 export function start(port) {
+
+    db.startDatabase();
+    //db.insertRow(testDoc);
 
     app.use(require('serve-static')(path.join(__dirname, 'dist')));
 

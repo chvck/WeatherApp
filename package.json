@@ -25,6 +25,7 @@
   "homepage": "https://github.com/herman-rogers/WeatherApp#readme",
   "dependencies": {
     "express": "^4.13.4",
+    "nedb": "^1.8.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",
