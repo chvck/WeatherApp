@@ -1,5 +1,6 @@
 import Express from 'express';
 import path from 'path';
+import * as api from './server/api/http.js';
 import * as db from './database/database.js';
 import * as migrations from './database/migrations.js';
 
@@ -15,6 +16,8 @@ export function start(port) {
     app.get('/', (req, res) => {
         res.sendFile(__dirname + '/index.html');
     });
+
+    app.get('/api/0/weather', api.getCurrentWeather);
 
     app.listen(port, (error) => {
         if(error) {
