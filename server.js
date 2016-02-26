@@ -1,15 +1,14 @@
 import Express from 'express';
-import * as db from './database/database.js';
 import path from 'path';
+import * as db from './database/database.js';
+import * as migrations from './database/migrations.js';
 
 export const app = Express();
-
-//var testDoc = { hello: 'world', n: 5, today: new Date() };
 
 export function start(port) {
 
     db.startDatabase();
-    //db.insertRow(testDoc);
+    migrations.create();
 
     app.use(require('serve-static')(path.join(__dirname, 'dist')));
 

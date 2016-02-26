@@ -1,6 +1,18 @@
 import Datastore from 'nedb';
 
-var db;
+export var db;
+
+// Database Structures
+export function weatherRow(timestamp, weekday, high, low) {
+    return { 
+      weatherData: {
+        timestamp: timestamp, 
+        weekday: weekday,
+        high: high,
+        low: low 
+      }
+    };
+}
 
 export function startDatabase() {
     if(db) {
@@ -13,8 +25,6 @@ export function insertRow(data) {
     db.insert(data, (error, result) => {
         if(error) {
             console.error(error);
-        } else {
-            console.log('Insert Successful:', result);
         }
     });
 }
