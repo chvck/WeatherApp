@@ -17,7 +17,7 @@ h2 {
 }
 
 .forecast-block {
-  width: 140px;
+  max-width: 1000px;
   height: 160px;
   list-style: none;
   display: inline-block;
