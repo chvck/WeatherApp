@@ -1,0 +1,41 @@
+body {
+    font-family: Verdana, Geneva, sans-serif;
+    text-align: center;
+    background-color: #ebebeb;
+}
+
+h2 {
+    color: #3c7fc3;
+}
+
+.forecast-container {
+    margin-top: 160px;
+}
+
+.forecast-container div{
+    display: inline-block;
+}
+
+.forecast-block {
+  width: 140px;
+  height: 160px;
+  list-style: none;
+  display: inline-block;
+  padding: 20px;
+  border: 1px solid #ebebeb;
+  background-color: #fff;
+  text-align: left;
+}
+
+.forecast-header {
+   font-size: 20px;
+   color: #3c7fc3;
+}
+
+.forecast-block h3 {
+    margin: 0;
+}
+
+.forecast-block-temps {
+    margin-bottom: 10px;
+}
