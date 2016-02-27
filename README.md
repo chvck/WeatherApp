@@ -2,7 +2,7 @@
 
 ## Setup
 - clone this repo
-- Run `cd` into the WeatherApp directory
+- `cd` into the WeatherApp directory
 - Run `npm install` to install necessary packages
 - Run `npm run build` to build application files
 - Run `npm start` to start up the app
