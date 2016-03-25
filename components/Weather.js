@@ -35,10 +35,10 @@ export default class Weather extends Component {
                   if(index === 0) {
                       return;
                   }
-                  let data = weather.weatherData;
+                  let data = weather;
                   let previousData = this.props.forecast[index - 1] || weather;
-                  let highDiff = data.high - previousData.weatherData.high;
-                  let lowDiff = data.low - previousData.weatherData.low;
+                  let highDiff = data.high - previousData.high;
+                  let lowDiff = data.low - previousData.low;
 
                   return (
                       <div key={data.timestamp}>

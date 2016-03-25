@@ -18,7 +18,7 @@ export function getCurrentWeather(req, res) {
                 let absoluteDate = new Date(today.getFullYear(), today.getDay(), today.getMonth());
                 let yesterdayTimestamp = absoluteDate.setDate(absoluteDate.getDate() - 1);
 
-                db.db.find({ 'weatherData.timestamp': yesterdayTimestamp }, (err, yesterday ) => {
+                db.GetByTimestamp(yesterdayTimestamp, (err, yesterday ) => {
                     let forecast = [];
                     forecast.push(yesterday[0]);
 

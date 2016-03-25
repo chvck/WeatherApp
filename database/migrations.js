@@ -25,11 +25,20 @@ export function createHistoricalData() {
 }
 
 export function create() {
-    database.db.find({}, (error, data) => {
+    database.count((error, data) => {
         if(error) {
-            console.warning(error);
+            console.error(error);
+            if (error.code === '42P01') {
+                database.createTable((err, res) => {
+                    if (err) {
+                        console.error(err);
+                    } else {
+                        this.createHistoricalData();
+                    }
+                });
+            }
         } else {
-            if(data.length <= 0) {
+            if(data.rows[0].count === 0) {
                 this.createHistoricalData();
             }
         } 
