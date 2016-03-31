@@ -8,8 +8,8 @@ export const app = Express();
 
 export function start(port) {
 
-    db.startDatabase();
     migrations.create();
+    db.startDatabase();
 
     app.use(require('serve-static')(path.join(__dirname, 'dist')));
 
@@ -17,7 +17,7 @@ export function start(port) {
         res.sendFile(__dirname + '/index.html');
     });
 
-    app.get('/api/0/weather', api.getCurrentWeather);
+    app.get('/forecasts', api.getCurrentWeather);
 
     app.listen(port, (error) => {
         if(error) {

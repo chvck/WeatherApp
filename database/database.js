@@ -2,18 +2,21 @@ var pg = require('pg');
 const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/weather';
 const weatherTable = 'weatherData';
 
-function insertRow(data) {
+function insertRow(data, cb) {
     pg.connect(connectionString, function(err, client, done) {
         if(err || !client) {
             done();
             console.error(err);
         } else {
             client.query('INSERT INTO ' + weatherTable + ' (ctimestamp, conditions, weekday, high, low) VALUES (' + data.timestamp +
-                         ', \'' + data.conditions + '\', \'' + data.weekday + '\', ' + data.high + ', ' + data.low + ');',
+                         ', \'' + data.conditions + '\', \'' + data.weekday + '\', ' + data.high + ', ' + data.low + ') returning id;',
                 (err, res) => {
                     done();
                     if (err) {
                         console.error(err);
+                    }
+                    if (cb) {
+                        cb(res.rows[0].id);
                     }
                 }
             );
@@ -21,8 +24,8 @@ function insertRow(data) {
     });
 }
 
-function dateIsHistorical(data) {
-    insertRow(data);
+function dateIsHistorical(data, cb) {
+    insertRow(data, cb);
 }
 
 function dateIsCurrentDay(data, timestamp) {
@@ -80,13 +83,13 @@ export function weatherRow(timestamp, weekday, high, low, conditions = 'unknown'
 export function startDatabase() {
 }
 
-export function insertDateRow(data) {
+export function insertDateRow(data, cb) {
     let timestamp = data.timestamp;
     let today = new Date();
     let dateTime = new Date(today.getFullYear(), today.getDay(), today.getMonth());
 
     if(timestamp < Date.parse(dateTime)) {
-        dateIsHistorical(data);
+        dateIsHistorical(data, cb);
     } else {
         dateIsCurrentDay(data, timestamp);
     }
@@ -99,7 +102,7 @@ export function createTable(cb) {
           console.error(err);
         }
         
-        client.query('CREATE TABLE ' + weatherTable + ' (ctimestamp bigint, conditions varchar(40), weekday varchar(10), high real, low real);', (err, res) => {
+        client.query('CREATE TABLE ' + weatherTable + ' (id serial, ctimestamp bigint, conditions varchar(40), weekday varchar(10), high real, low real);', (err, res) => {
             done();
             cb(err, res);
         });

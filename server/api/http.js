@@ -20,7 +20,7 @@ export function getCurrentWeather(req, res) {
 
                 db.GetByTimestamp(yesterdayTimestamp, (err, yesterday ) => {
                     let forecast = [];
-                    forecast.push(yesterday[0]);
+                    //forecast.push(yesterday[0]);
 
                     days.map((day,index) => {
                         let dateTime = absoluteDate.setDate(absoluteDate.getDate() + index);
@@ -31,9 +31,9 @@ export function getCurrentWeather(req, res) {
                         let weatherObject = db.weatherRow(dateTime, weekday, dayHi, dayLow, conditions);
 
                         db.insertDateRow(weatherObject);
-                        forecast.push(weatherObject);
+                        forecast.push({id: index, type: 'forecast', attributes: weatherObject});
                     });
-                    res.json(forecast);               
+                    res.json({data: forecast});               
                 });
 
             });

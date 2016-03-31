@@ -1,0 +1,25 @@
+{{log "yo"}}
+<div>
+  {{#if loading}}
+    <p>{loading}</p>
+  {{else}}
+      <div class='forecast-block'>
+        <li>
+          {{day}}
+          <h3>{{conditions}}</h3>
+          <br />
+          <div class='forecast-block-temps'>
+            <b>High &nbsp;</b>
+            {{forecastModel.high}}&#176; &nbsp; 
+            <b>{{showHighDiff}}</b>
+          </div>
+          <br/>
+          <div class='forecast-block-temps'>
+            <b>Low &nbsp;</b>
+            {{forecastModel.low}}&#176; &nbsp; 
+            <b>{{showLowDiff}}</b>
+          </div>
+        </li>
+      </div>
+{{/if}}
+</div>
